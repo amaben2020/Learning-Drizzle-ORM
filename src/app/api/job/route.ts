@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { jobs } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { ilike } from 'drizzle-orm';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -8,7 +8,10 @@ export async function GET(req: NextRequest) {
     // const { title } = await req.json();
     // console.log('Title', title);
 
-    const jobsData = await db.select().from(jobs).where(eq(jobs.id, 1));
+    const jobsData = await db
+      .select()
+      .from(jobs)
+      .where(ilike(jobs.title, '%junior%'));
     // .where(like(jobs.title, `%software%`));
     console.log('jobsData', 'jobsData');
     return NextResponse.json({ jobs: jobsData });

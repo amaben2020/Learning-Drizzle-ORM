@@ -12,7 +12,7 @@ export async function POST() {
     // });
     console.log('CALLED');
     await db.insert(jobs).values({
-      title: 'Senior Backend software engineer',
+      title: 'Junior Backend software engineer',
       // type: 'internship',
       description: 'lorem ipsum',
       salary: 100000,
