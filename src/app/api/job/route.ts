@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { jobs } from '@/db/schema';
-import { ilike } from 'drizzle-orm';
+import { ilike, or } from 'drizzle-orm';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -9,10 +9,16 @@ export async function GET(req: NextRequest) {
   const title = url.searchParams.get('title');
 
   try {
+    // means either the title or description could be used to search
     const jobsData = await db
       .select()
       .from(jobs)
-      .where(ilike(jobs.title, `%${title}%`));
+      .where(
+        or(
+          ilike(jobs.title, `%${title}%`),
+          ilike(jobs.description, `%${title}%`)
+        )
+      );
 
     return NextResponse.json({ jobs: jobsData });
   } catch (error) {
