@@ -19,6 +19,30 @@ export const users = pgTable('users', {
 
 export const roles = pgEnum('roles', ['admin', 'user', 'guest']);
 
+export const jobType = pgEnum('jobType', [
+  'full-time',
+  'part-time',
+  'contract',
+  'internship',
+  'temporary',
+  'volunteer',
+]);
+
+export const jobs = pgTable('jobs', {
+  id: serial('id').primaryKey(),
+  title: varchar('title', { length: 256 }).default('Software Engineer'),
+  salary: integer('salary').default(100000),
+  location: varchar('location', { length: 256 }).default('San Francisco'),
+  type: jobType('jobType').default('full-time'),
+  description: text('description').default('A software engineer job'),
+  company_id: integer('company_id').default(0),
+  created_at: integer('created_at').default(0),
+  updated_at: integer('updated_at').default(0),
+  deleted_at: integer('deleted_at').default(0),
+  status: integer('status').default(0),
+  type: integer('type').default(0),
+});
+
 export const testTable = pgTable('testTable', {
   qty: integer('qty').default(0),
   id: serial('id').primaryKey(),
