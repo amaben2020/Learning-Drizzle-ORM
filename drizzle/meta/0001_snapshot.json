@@ -1,9 +1,60 @@
 {
-  "id": "031fbd15-ea36-4cc1-a57a-b15ec1a680c6",
-  "prevId": "61f03439-ebff-4190-a6e9-ce8bed861015",
+  "id": "9f446d43-e545-48f1-9e82-269cad3a2c82",
+  "prevId": "ba1994d3-b270-4093-b90f-c40341fe55f6",
   "version": "6",
   "dialect": "postgresql",
   "tables": {
+    "public.jobs2": {
+      "name": "jobs2",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Software Engineer'"
+        },
+        "salary": {
+          "name": "salary",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 100000
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'San Francisco'"
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'A software engineer job'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2021-01-01'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.testTable": {
       "name": "testTable",
       "schema": "",
@@ -65,6 +116,13 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'123 Main St'"
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
         }
       },
       "indexes": {},
